@@ -20,11 +20,11 @@ describe('a11y input', () => {
    *
    */
   it('has a static shadowDOM', async () => {
-    const el = /** @type {A11yInput} */ (await fixture(html `<a11y-input></a11y-input>`));
-    expect(el.shadowRoot.innerHTML.toLocaleLowerCase.to.equal(
+    const el = /** @type {A11yInput} */ (await fixture(html`<a11y-input></a11y-input>`));
+    expect(el.shadowRoot.innerHTML).to.equal(
       `<slot name="label"></slot>
        <slot name="input"></slot>
       `
-    ));
+    );
   });
 });
