@@ -19,12 +19,19 @@ describe('a11y input', () => {
    * Add an assertion to test the contents of <a11y-input> shadow root.
    *
    */
+  // it('has a static shadowDOM', async () => {
+  //   const el = /** @type {A11yInput} */ (await fixture(html`<a11y-input></a11y-input>`));
+  //   expect(el.shadowRoot.innerHTML).to.equal(
+  //     `<slot name="label"></slot>
+  //      <slot name="input"></slot>
+  //     `
+  //   );
+  // }); // innerHTML relies on simple string equality
   it('has a static shadowDOM', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`<a11y-input></a11y-input>`));
-    expect(el.shadowRoot.innerHTML).to.equal(
-      `<slot name="label"></slot>
-       <slot name="input"></slot>
-      `
-    );
+    expect(el).shadowDom.to.equal(`
+      <slot name="label"></slot>
+      <slot name="input"></slot>
+    `);
   });
 });

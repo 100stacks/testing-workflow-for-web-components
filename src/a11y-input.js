@@ -19,8 +19,8 @@ export class A11yInput extends LitElement {
   // Add Shadow DOM
   render () {
     return html`
-    <slot name="label"></slot>
-    <slot name="input"></slot>
+      <slot name="label"></slot>
+      <slot name="input"></slot>
     `;
   };
 };
