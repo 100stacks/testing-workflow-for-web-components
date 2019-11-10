@@ -12,4 +12,19 @@ describe('a11y input', () => {
     const el = /** @type {A11yInput} */ (await fixture('<a11y-input></a11y-input>'));
     expect(el.label).to.equal('');
   });
+
+  /**
+   * Test Shadow Root
+   *
+   * Add an assertion to test the contents of <a11y-input> shadow root.
+   *
+   */
+  it('has a static shadowDOM', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html `<a11y-input></a11y-input>`));
+    expect(el.shadowRoot.innerHTML.toLocaleLowerCase.to.equal(
+      `<slot name="label"></slot>
+       <slot name="input"></slot>
+      `
+    ));
+  });
 });
