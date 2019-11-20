@@ -1,7 +1,7 @@
 /* eslint-disable no-unused-expressions */
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '../src/my-app';
+import '../src/my-app.js';
 
 /**
  * my-app.test.js
@@ -16,9 +16,12 @@ import '../src/my-app';
        <my-app .label=${'foo'}></my-app>
      `));
 
-     expect(el).shadowDom.to.equal(`
-        <h1>My Filter App</h1>
-        <a11y-input></a11y-input>
-     `);
+    //  expect(el).shadowDom.to.equal(`
+    //     <h1>My Filter App Foo 😳</h1>
+    //     <a11y-input></a11y-input>
+    //  `, {
+    //    ignoreChildren: ['a11y-input-foobar']
+    //  });
+    expect(el).shadowDom.to.equalSnapshot();
    });
  });
