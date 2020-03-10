@@ -11,7 +11,7 @@ module.exports = config => {
         //
         // npm run test -- --grep test/foo/bar.test.js
         // npm run test -- --grep test/bar/*
-        config.grep ? config.grep : 'test/**/*.test.js',
+        config.grep ? config.grep : 'a11y*/test/**/*.test.js',
       ],
 
       // you can overwrite/extend the config further
