@@ -1,6 +1,6 @@
 /* eslint-disable import/no-extraneous-dependencies */
-const createDefaultConfig = require('@open-wc/testing-karma/default-config');
-const merge = require('webpack-merge');
+const { createDefaultConfig } = require('@open-wc/testing-karma');
+const merge = require('deepmerge');
 
 module.exports = config => {
   config.set(
@@ -11,9 +11,12 @@ module.exports = config => {
         //
         // npm run test -- --grep test/foo/bar.test.js
         // npm run test -- --grep test/bar/*
-        config.grep ? config.grep : 'a11y*/test/**/*.test.js',
+        { pattern: config.grep ? config.grep : 'test/**/*.test.js', type: 'module' },
       ],
 
+      esm: {
+        nodeResolve: true,
+      },
       // you can overwrite/extend the config further
     }),
   );
