@@ -2,13 +2,13 @@
 import { LitElement, html, css } from 'lit-element';
 
 export class A11yInput extends LitElement {
-  static get properties() {
+  static get properties () {
     return {
       label: { type: String },
     };
   }
 
-  constructor() {
+  constructor () {
     super();
     this.label = '';
   }
@@ -17,7 +17,7 @@ export class A11yInput extends LitElement {
    * Anti-Pattern for testing the `Light DOM`,
    * though useful for testing a11y 🤷‍♂️😳
    */
-  connectedCallback() {
+  connectedCallback () {
     super.connectedCallback();
     this.labelEl = document.createElement('label');
     this.labelEl.innerText = this.label;
@@ -30,7 +30,7 @@ export class A11yInput extends LitElement {
   }
 
   // eslint-disable-next-line class-methods-use-this
-  render() {
+  render () {
     return html`
       <slot name="label"></slot>
       <slot name="input"></slot>
