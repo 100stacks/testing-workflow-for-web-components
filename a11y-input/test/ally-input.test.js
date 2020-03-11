@@ -28,7 +28,8 @@ describe('a11y input', () => {
       <a11y-input></a11y-input>
     `));
 
-    expect(el.shadowRoot.innerHTML).to.equal(`
+    // ref: @open-wc chai plugin https://open-wc.org/testing/semantic-dom-diff.html
+    expect(el).shadowDom.to.equal(`
       <slot name="label"></slot>
       <slot name="input"></slot>
     `)
