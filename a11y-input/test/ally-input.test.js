@@ -12,9 +12,26 @@ import '../src/ally-input';
  * @typedef {import('../src/ally-input.js').A11yInput} A11yInput
  */
 
- describe('a11y input', () => {
-   it('has by default an empty string as label', async () => {
-     const el = /** @type {A11yInput} */ (await fixture('<a11y-input></a11y-input>'));
-     expect(el.label).to.equal('');
-   });
- });
+describe('a11y input', () => {
+  it('has by default an empty string as label', async () => {
+    const el = /** @type {A11yInput} */ (await fixture('<a11y-input></a11y-input>'));
+    expect(el.label).to.equal('');
+  });
+});
+
+ /**
+  * Testing Shadow DOM
+  */
+describe('a11y input', () => {
+  it(`has a static shadowDOM`, async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
+
+    // ref: @open-wc chai plugin https://open-wc.org/testing/semantic-dom-diff.html
+    expect(el).shadowDom.to.equal(`
+      <slot name="label"></slot>
+      <slot name="input"></slot>
+    `)
+  });
+});
