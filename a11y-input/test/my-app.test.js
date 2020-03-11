@@ -13,9 +13,12 @@ describe("My Filter App", () => {
       <my-app .label=${"foo"}></my-app>
     `));
 
-    expect(el).shadowDom.to.equal(`
+    expect(el).shadowDom.to.equal(
+      `
       <h1>My Filter App</h1>
       <a11y-input></a11y-input>
-    `);
+    `,
+      { ignoreChildren: ["a11y-input"] }
+    );
   });
 });
