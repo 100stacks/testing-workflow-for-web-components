@@ -19,9 +19,9 @@ describe('a11y input', () => {
   });
 });
 
- /**
-  * Testing Shadow DOM
-  */
+/**
+ * Testing Shadow DOM
+ */
 describe('a11y input', () => {
   it(`has a static Shadow DOM`, async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
@@ -32,7 +32,7 @@ describe('a11y input', () => {
     expect(el).shadowDom.to.equal(`
       <slot name="label"></slot>
       <slot name="input"></slot>
-    `)
+    `);
   });
 });
 
@@ -46,8 +46,8 @@ describe('a11y input', () => {
     `));
 
     expect(el).lightDom.to.equal(`
-      <label slot="label"></slot>
-      <input slot="name">
+      <label slot="label">foo</label>
+      <input slot="input">
     `);
   });
 });
