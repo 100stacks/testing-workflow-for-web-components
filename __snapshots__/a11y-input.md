@@ -1,6 +1,6 @@
 # `a11y-input.js`
 
-#### `has a static ShadowDOM`
+#### `has a static Shadow DOM snapshot`
 
 ```html
 <slot name="label">
