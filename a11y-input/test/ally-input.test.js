@@ -23,7 +23,7 @@ describe('a11y input', () => {
   * Testing Shadow DOM
   */
 describe('a11y input', () => {
-  it(`has a static shadowDOM`, async () => {
+  it(`has a static Shadow DOM`, async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
       <a11y-input></a11y-input>
     `));
@@ -33,5 +33,21 @@ describe('a11y input', () => {
       <slot name="label"></slot>
       <slot name="input"></slot>
     `)
+  });
+});
+
+/**
+ * Testing Light DOM
+ */
+describe('a11y input', () => {
+  it('has 1 input and 1 label in the Light DOM', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input .label=${'foo'}></a11y-input>
+    `));
+
+    expect(el).lightDom.to.equal(`
+      <label slot="label"></slot>
+      <input slot="name">
+    `);
   });
 });
