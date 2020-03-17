@@ -29,10 +29,19 @@ describe('a11y input', () => {
     `));
 
     // ref: @open-wc chai plugin https://open-wc.org/testing/semantic-dom-diff.html
-    expect(el).shadowDom.to.equal(`
-      <slot name="label"></slot>
-      <slot name="input"></slot>
-    `);
+    /**
+     * manual snapshot testing...
+     *
+     */
+    // expect(el).shadowDom.to.equal(`
+    //   <slot name="label"></slot>
+    //   <slot name="input"></slot>
+    // `);
+
+    /**
+     * semi/automatic snapshots using the `Karma` plugin
+     */
+    expect(el).shadowDom.to.equalSnapshot();
   });
 });
 
