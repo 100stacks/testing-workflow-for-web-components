@@ -37,6 +37,8 @@ export class A11yInput extends LitElement {
   }
 
   set value (newValue) {
+    debugger; // debugging Type Error
+
     if (newValue === 'cat') {
       console.log('We like cats too. 🐱');
     }

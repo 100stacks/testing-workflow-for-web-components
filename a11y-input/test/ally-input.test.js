@@ -72,6 +72,8 @@ describe('a11y input', () => {
       <a11y-input .value=${'foo'}></a11y-input>
     `));
 
+    // add debugger
+    debugger;
     expect(el.value).to.equal('foo');
   });
 });
