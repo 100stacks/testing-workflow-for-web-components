@@ -29,6 +29,21 @@ export class A11yInput extends LitElement {
     this.appendChild(this.inputEl);
   }
 
+  /**
+   * Adding getter/setter will change `code coverage` report.
+   */
+  get value () {
+    return this.inputEl.value;
+  }
+
+  set value (newValue) {
+    if (newValue === 'cat') {
+      console.log('We like cats too. 🐱');
+    }
+
+    this.inputEl.value = newValue;
+  }
+
   // eslint-disable-next-line class-methods-use-this
   render () {
     return html`

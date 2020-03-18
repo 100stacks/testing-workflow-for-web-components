@@ -14,7 +14,9 @@ import '../src/ally-input';
 
 describe('a11y input', () => {
   it('has by default an empty string as label', async () => {
-    const el = /** @type {A11yInput} */ (await fixture('<a11y-input></a11y-input>'));
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
     expect(el.label).to.equal('');
   });
 });
@@ -58,5 +60,18 @@ describe('a11y input', () => {
       <label slot="label">foo</label>
       <input slot="input">
     `);
+  });
+});
+
+/**
+ * Testing getter/setter
+ */
+describe('a11y input', () => {
+  it('can set/get the input value directly via the custom element', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input .value=${'foo'}></a11y-input>
+    `));
+
+    expect(el.value).to.equal('foo');
   });
 });
