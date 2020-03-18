@@ -14,7 +14,7 @@ import '../src/ally-input';
 
 describe('a11y input', () => {
   it('has by default an empty string as label', async () => {
-    const el = /** @type {A11yInput} */ (await fixture(`
+    const el = /** @type {A11yInput} */ (await fixture(html`
       <a11y-input></a11y-input>
     `));
     expect(el.label).to.equal('');
