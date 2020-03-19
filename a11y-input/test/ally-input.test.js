@@ -56,6 +56,7 @@ describe('a11y input', () => {
       <a11y-input .label=${'foo'}></a11y-input>
     `));
 
+    debugger;
     expect(el).lightDom.to.equal(`
       <label slot="label">foo</label>
       <input slot="input">
@@ -69,7 +70,7 @@ describe('a11y input', () => {
 describe('a11y input', () => {
   it('can set/get the input value directly via the custom element', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
-      <a11y-input .value=${'foo'}></a11y-input>
+      <ally-input .value=${'foo'}></ally-input>
     `));
 
     // add debugger

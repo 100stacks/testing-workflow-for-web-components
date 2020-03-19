@@ -3,7 +3,6 @@
 import { LitElement, html, css } from "lit-element";
 
 export class MyApp extends LitElement {
-  // content placeholder
 
   render() {
     return html`
