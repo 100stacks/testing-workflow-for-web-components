@@ -5,12 +5,18 @@ export class A11yInput extends LitElement {
   static get properties () {
     return {
       label: { type: String },
+      value: { type: String },
     };
   }
 
   constructor () {
     super();
     this.label = '';
+    this.value = ''; // lesson 6 - debug in browser
+    /** @type {HTMLLabelElement} */
+    this.labelEl = null;
+    /** @type {HTMLInputElement} */
+    this.inputEl = null;
   }
 
   /**
@@ -29,6 +35,19 @@ export class A11yInput extends LitElement {
     this.appendChild(this.inputEl);
   }
 
+  update(changedProperties) {
+    super.update(changedProperties);
+
+    if (changedProperties.has('value')) {
+      if (this.value === 'cat') {
+        console.log('We like cats too. 🐱');
+      }
+
+      // debugger;
+      this.inputEl.value = this.value;
+    }
+  }
+
   /**
    * Adding getter/setter will change `code coverage` report.
    */
@@ -37,11 +56,14 @@ export class A11yInput extends LitElement {
   }
 
   set value (newValue) {
+    // debugger; // lesson 6 - debugging TypeError bug
     if (newValue === 'cat') {
       console.log('We like cats too. 🐱');
     }
 
-    this.inputEl.value = newValue;
+    if (this.inputEl) {
+      this.inputEl.value = newValue;
+    }
   }
 
   // eslint-disable-next-line class-methods-use-this
