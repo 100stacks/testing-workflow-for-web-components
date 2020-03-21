@@ -1,6 +1,6 @@
 # `a11y input`
 
-#### `has a static Shadow DOM`
+#### `has a static Shadow DOM` - verify snapshot usage
 
 ```html
 <slot name="label">
