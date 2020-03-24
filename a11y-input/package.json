@@ -1,8 +1,8 @@
 {
-  "name": "ally-input",
+  "name": "a11y-input",
   "version": "0.0.0",
-  "description": "Webcomponent ally-input following open-wc recommendations",
-  "author": "ally-input",
+  "description": "Webcomponent a11y-input following open-wc recommendations",
+  "author": "a11y-input",
   "license": "MIT",
   "main": "index.js",
   "module": "index.js",

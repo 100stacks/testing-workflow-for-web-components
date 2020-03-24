@@ -6,10 +6,10 @@
 
 import { html, fixture, expect } from '@open-wc/testing';
 
-import '../src/ally-input';
+import '../src/a11y-input';
 
 /**
- * @typedef {import('../src/ally-input.js').A11yInput} A11yInput
+ * @typedef {import('../src/a11y-input.js').A11yInput} A11yInput
  */
 
 describe('a11y input', () => {
@@ -56,7 +56,7 @@ describe('a11y input', () => {
       <a11y-input .label=${'foo'}></a11y-input>
     `));
 
-    debugger;
+    // debugger;
     expect(el).lightDom.to.equal(`
       <label slot="label">foo</label>
       <input slot="input">
@@ -67,14 +67,14 @@ describe('a11y input', () => {
 /**
  * Testing getter/setter
  */
-describe('a11y input', () => {
+describe('ally input', () => {
   it('can set/get the input value directly via the custom element', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
       <ally-input .value=${'foo'}></ally-input>
     `));
 
     // add debugger
-    debugger;
+    // debugger;
     expect(el.value).to.equal('foo');
   });
 });
@@ -99,10 +99,10 @@ describe('a11y input', () => {
  * 24 03 2020 11:31:30.693:ERROR [reporter.coverage-istanbul]:
  *  Coverage for functions (87.5%) does not meet global threshold (90%)
  */
-describe('ally input', () => {
+describe('a11y input', () => {
   it('logs "We like cats too 🐱" if the value is "cat"', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
-      <ally-input .value=${'cat'}></ally-input>
+      <a11y-input .value=${'cat'}></a11y-input>
     `));
 
       // stub console.log test

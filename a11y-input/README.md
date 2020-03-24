@@ -1,19 +1,19 @@
-# \<ally-input>
+# \<a11y-input>
 
 This webcomponent follows the [open-wc](https://github.com/open-wc/open-wc) recommendation.
 
 ## Installation
 ```bash
-npm i ally-input
+npm i a11y-input
 ```
 
 ## Usage
 ```html
 <script type="module">
-  import 'ally-input/ally-input.js';
+  import 'a11y-input/a11y-input.js';
 </script>
 
-<ally-input></ally-input>
+<a11y-input></a11y-input>
 ```
 
 ## Testing with Karma
