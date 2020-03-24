@@ -70,7 +70,7 @@ describe('a11y input', () => {
 describe('ally input', () => {
   it('can set/get the input value directly via the custom element', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
-      <ally-input .value=${'foo'}></ally-input>
+      <ally-input .value=${'foo'}></a11y-input>
     `));
 
     // add debugger
@@ -101,10 +101,27 @@ describe('ally input', () => {
  */
 describe('a11y input', () => {
   it('logs "We like cats too 🐱" if the value is "cat"', async () => {
-    const el = /** @type {A11yInput} */ (await fixture(html`
+    const el = /** @type {A11yInput} */ (await fixture(`
       <a11y-input .value=${'cat'}></a11y-input>
     `));
 
       // stub console.log test
+  });
+});
+
+/**
+ * test changing `label`
+ */
+describe('a11y input', () => {
+  it('can update its label', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(`
+      <a11y-input label="foo"></a11y-input>
+    `));
+
+    expect(el.label).to.equal('foo');
+
+    // change label and test
+    el.label = 'bar';
+    expect(el.label).to.equal('bar');
   });
 });
