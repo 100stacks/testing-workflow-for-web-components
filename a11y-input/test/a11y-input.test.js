@@ -67,16 +67,31 @@ describe('a11y input', () => {
 });
 
 /**
- * Testing getter/setter
+ * Testing getter/setter *THIS TEST FAILS with <a11y-input>
  */
 describe('ally input', () => {
   it('can set/get the input value directly via the custom element', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
-      <ally-input .value=${'foo'}></a11y-input>
+      <bar .value=${'foo'}></bar>
     `));
 
     // add debugger
-    // debugger;
+    debugger;
+    expect(el.value).to.equal('foo');
+  });
+});
+
+/**
+ * Testing getter/setter *THIS TEST FAILS with <a11y-input>
+ */
+describe('ally input', () => {
+  it('can set/get the input value directly via the custom element', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input .value=${'foo'}></a11y-input>
+    `));
+
+    // add debugger
+    debugger;
     expect(el.value).to.equal('foo');
   });
 });
@@ -154,6 +169,15 @@ describe('a11y input with sinon', () => {
     const logSpy = sinon.spy(el, 'log');
 
     el.value = 'cat';
+    // debugger;
     expect(logSpy.callCount).to.equal(1);
+    expect(logSpy.calledWith('We like cats too. 🐱')).to.be.true;
+
+    // different values do NOT log
+    el.value = 'foo';
+    expect(logSpy.callCount).to.equal(1);
+
+    el.value = 'cat';
+    expect(logSpy.callCount).to.equal(2);
   });
 });
