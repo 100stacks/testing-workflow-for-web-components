@@ -6,6 +6,8 @@
 
 import { html, fixture, expect } from '@open-wc/testing';
 
+import sinon from 'sinon';
+
 import '../src/a11y-input';
 
 /**
@@ -65,16 +67,31 @@ describe('a11y input', () => {
 });
 
 /**
- * Testing getter/setter
+ * Testing getter/setter *THIS TEST FAILS with <a11y-input>
  */
 describe('ally input', () => {
   it('can set/get the input value directly via the custom element', async () => {
     const el = /** @type {A11yInput} */ (await fixture(html`
-      <ally-input .value=${'foo'}></a11y-input>
+      <bar .value=${'foo'}></bar>
     `));
 
     // add debugger
-    // debugger;
+    debugger;
+    expect(el.value).to.equal('foo');
+  });
+});
+
+/**
+ * Testing getter/setter *THIS TEST FAILS with <a11y-input>
+ */
+describe('ally input', () => {
+  it('can set/get the input value directly via the custom element', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input .value=${'foo'}></a11y-input>
+    `));
+
+    // add debugger
+    debugger;
     expect(el.value).to.equal('foo');
   });
 });
@@ -123,5 +140,44 @@ describe('a11y input', () => {
     // change label and test
     el.label = 'bar';
     expect(el.label).to.equal('bar');
+  });
+});
+
+/**
+ * `sinon` - using spies
+ */
+describe('a11y input with sinon', () => {
+  it('outputs "we like cats too 🐱🐈" if the value is set to "cat"', async () => {
+    const logSpy = sinon.spy(console, 'log');
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
+
+    el.value = 'cat';
+    expect(logSpy.callCount).to.equal(1);
+  });
+});
+
+/**
+ * `sinon` - using spies with stubbed console log
+ */
+describe('a11y input with sinon', () => {
+  it('outputs "we like cats too 🐱🐈" if the value is set to "cat"', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
+    const logSpy = sinon.spy(el, 'log');
+
+    el.value = 'cat';
+    // debugger;
+    expect(logSpy.callCount).to.equal(1);
+    expect(logSpy.calledWith('We like cats too. 🐱')).to.be.true;
+
+    // different values do NOT log
+    el.value = 'foo';
+    expect(logSpy.callCount).to.equal(1);
+
+    el.value = 'cat';
+    expect(logSpy.callCount).to.equal(2);
   });
 });

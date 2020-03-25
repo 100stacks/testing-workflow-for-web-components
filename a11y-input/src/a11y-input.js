@@ -35,17 +35,39 @@ export class A11yInput extends LitElement {
     this.appendChild(this.inputEl);
   }
 
-  update(changedProperties) {
+  /**
+   *
+   * We have to override a private method since `update` is not synchronous.
+   *
+   * @param {String} name
+   * @param {String} oldValue
+   */
+  _requestUpdate (name, oldValue) {
+    super._requestUpdate(name, oldValue);
+
+    // console.log(`_requestedUpdate: name=${name} , oldValue=${oldValue}`);
+
+    if (name === 'value') {
+      if (this.value === 'cat') {
+        this.log('We like cats too. 🐱');
+      }
+    }
+  }
+
+  update (changedProperties) {
     super.update(changedProperties);
 
     if (changedProperties.has('value')) {
-      if (this.value === 'cat') {
-        console.log('We like cats too. 🐱');
-      }
-
-      // debugger;
+      // console.log(`update called: ${this.value}`);
       this.inputEl.value = this.value;
     }
+  }
+
+  /**
+   * stubbing `console.log`
+   */
+  log (msg) {
+    console.log(msg);
   }
 
   /**
@@ -57,8 +79,10 @@ export class A11yInput extends LitElement {
 
   set value (newValue) {
     // debugger; // lesson 6 - debugging TypeError bug
+    // console.log(`set new value: ${newValue}`);
+
     if (newValue === 'cat') {
-      console.log('We like cats too. 🐱');
+      this.log('We like cats too. 🐱');
     }
 
     if (this.inputEl) {
