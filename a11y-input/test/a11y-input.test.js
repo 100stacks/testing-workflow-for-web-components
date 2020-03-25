@@ -6,6 +6,8 @@
 
 import { html, fixture, expect } from '@open-wc/testing';
 
+import sinon from 'sinon';
+
 import '../src/a11y-input';
 
 /**
@@ -123,5 +125,35 @@ describe('a11y input', () => {
     // change label and test
     el.label = 'bar';
     expect(el.label).to.equal('bar');
+  });
+});
+
+/**
+ * `sinon` - using spies
+ */
+describe('a11y input with sinon', () => {
+  it('outputs "we like cats too 🐱🐈" if the value is set to "cat"', async () => {
+    const logSpy = sinon.spy(console, 'log');
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
+
+    el.value = 'cat';
+    expect(logSpy.callCount).to.equal(1);
+  });
+});
+
+/**
+ * `sinon` - using spies with stubbed console log
+ */
+describe('a11y input with sinon', () => {
+  it('outputs "we like cats too 🐱🐈" if the value is set to "cat"', async () => {
+    const el = /** @type {A11yInput} */ (await fixture(html`
+      <a11y-input></a11y-input>
+    `));
+    const logSpy = sinon.spy(el, 'log');
+
+    el.value = 'cat';
+    expect(logSpy.callCount).to.equal(1);
   });
 });

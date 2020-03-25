@@ -40,12 +40,18 @@ export class A11yInput extends LitElement {
 
     if (changedProperties.has('value')) {
       if (this.value === 'cat') {
-        console.log('We like cats too. 🐱');
+        this.log('We like cats too. 🐱');
       }
-
       // debugger;
       this.inputEl.value = this.value;
     }
+  }
+
+  /**
+   * stubbing `console.log`
+   */
+  log (msg) {
+    console.log(msg);
   }
 
   /**
